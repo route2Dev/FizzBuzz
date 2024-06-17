@@ -7,9 +7,14 @@ function FizzBuzzList() {
   const raw = useAtomValue(rawInputAtom);
   const results = useAtomValue(entriesAtom);
 
+  if (!raw) {
+    return null;      
+  }
+
+
   return (
     <>
-      <div className="pt-6">
+      <div className="pt-6" data-testid="input-display">
         {raw && (
           <p>
             You entered <span>{raw}</span>
@@ -18,10 +23,10 @@ function FizzBuzzList() {
       </div>
 
       <div className="pt-4">
-        <table className="min-w-full divide-y divide-gray-100">
+        <table className="min-w-full divide-y divide-gray-100" data-testid="results-list">
           <thead>
             <tr>
-              <th className="px-6 py-3 text-center text-xs font-medium text-gray-200 bg-indigo-500 uppercase tracking-wider  border border-gray-900">
+              <th className="px-6 py-3 text-center text-xs font-medium text-gray-200 bg-indigo-500 uppercase tracking-wider border-r">
                 Input
               </th>
               <th className="px-6 py-3 text-xs font-medium text-center text-gray-200 bg-indigo-500 uppercase tracking-wider">
